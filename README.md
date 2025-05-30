@@ -71,7 +71,7 @@ El enfoque de importar SQLAlchemy en C++ con py::module::import tiene ventajas c
 
     Microservicios con cálculos intensivos:
         Si el microservicio combina consultas SQL con procesamiento pesado (por ejemplo, análisis de datos, machine learning, o simulaciones), C++ mejora el desempeño.
-        Ejemplo: En el contexto del microservicio GoogleNet, podrías usar SQLAlchemy en C++ para recuperar datos de entrenamiento desde PostgreSQL y luego procesarlos con una red neuronal en C++.
+        Ejemplo: En el contexto del microservicio GoogleNet, se podría usar SQLAlchemy en C++ para recuperar datos de entrenamiento desde PostgreSQL y luego procesarlos con una red neuronal en C++.
     Alta concurrencia:
         En aplicaciones FastAPI con muchas solicitudes concurrentes, mover la lógica a C++ permite liberar el GIL para cálculos, mejorando la escalabilidad.
         Ejemplo: Un endpoint que recupera datos de empleados y realiza cálculos estadísticos complejos en C++.
@@ -98,7 +98,7 @@ Usar libpq (la biblioteca nativa de PostgreSQL en C) en lugar de SQLAlchemy en C
 
     Mayor desempeño: libpq es más rápido porque evita el intérprete de Python y la sobrecarga de Pybind11.
     Menor dependencia: No requiere Python ni SQLAlchemy, reduciendo el tamaño de la imagen en OpenShift.
-    Control total: Puedes optimizar consultas y manejo de conexiones directamente en C++.
+    Control total: Se pueden optimizar consultas y manejo de conexiones directamente en C++.
 
 Desventajas de libpq:
 
@@ -107,10 +107,9 @@ Desventajas de libpq:
 
 Cuándo elegir libpq:
 
-    Si el desempeño es crítico y no necesitas las abstracciones de SQLAlchemy.
-    Ejemplo: En el microservicio de consultas en lenguaje natural, usamos libpq para generar y ejecutar consultas SQL directamente, evitando la sobrecarga de Python.
+    Si el desempeño es crítico y no se necesitan las abstracciones de SQLAlchemy.
 
 Cuándo elegir SQLAlchemy en C++:
 
-    Si necesitas las abstracciones de SQLAlchemy (ORM, sesiones, etc.) pero quieres combinarlas con cálculos en C++.
+    Si se necesitan las abstracciones de SQLAlchemy (ORM, sesiones, etc.) pero se requiere combinarlas con cálculos en C++.
     Ejemplo: El código CRUD proporcionado usa SQLAlchemy para definir el modelo Employee y realizar operaciones, pero podría procesar los resultados en C++ con Eigen.
